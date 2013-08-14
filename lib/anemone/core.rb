@@ -168,7 +168,7 @@ module Anemone
         page.discard_doc! if @opts[:discard_page_bodies]
 
         links = links_to_follow page
-        links.each do |link|
+        links.uniq.each do |link|
           link_queue << [link, page.url.dup, page.depth + 1]
         end
         @pages.touch_keys links
